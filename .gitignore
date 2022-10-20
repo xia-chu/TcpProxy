@@ -1,0 +1,10 @@
+*.d
+*.o
+.DS_Store
+/.idea/
+/Android_Project/.idea/
+/Android_Project/ProxySDK/.idea/
+/Android_Project/ProxySDK/proxysdk/libs_export/
+/cmake-build-debug/
+/Android_Project/ProxySDK/proxysdk/.cxx
+/IOS_Project/.idea/

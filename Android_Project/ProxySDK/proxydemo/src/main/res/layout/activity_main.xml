@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cn.crossnat.proxydemo.MainActivity">
+
+    <TextView
+        android:id="@+id/textView_userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="@string/userName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText_userName"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="@string/userNameHint"
+        android:inputType="textPersonName"
+        android:selectAllOnFocus="false"
+        android:maxLines="1"
+        android:text="@string/defaultUser"
+        app:layout_constraintLeft_toRightOf="@+id/textView_userName"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintHorizontal_bias="0.507" />
+
+    <EditText
+        android:id="@+id/editText_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/passwordHint"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:text="@string/defaultPwd"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_userName"
+        app:layout_constraintLeft_toRightOf="@+id/textView_userName"
+        android:layout_marginLeft="8dp" />
+
+    <TextView
+        android:id="@+id/textView_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:text="@string/password"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText_pwd"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_pwd">
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:onClick="onClick_login"
+            android:text="@string/login"
+            android:textAlignment="center" />
+
+        <ProgressBar
+            android:id="@+id/progressBar_login"
+            android:layout_width="20dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:visibility="invisible" />
+
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

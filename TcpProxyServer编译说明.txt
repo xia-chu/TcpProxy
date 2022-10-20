@@ -1,0 +1,55 @@
+	1、安装GCC5.2(如果gcc版本高于4.7可以跳过此步骤)
+	sudo yum install centos-release-scl -y
+	sudo yum install devtoolset-4-toolchain -y
+	scl enable devtoolset-4 bash
+
+	2、安装构建工具
+	#这3次yum安装是为了编译libev，
+	#如果通过yum或apt-get的方式安装libev可以跳过此步骤
+	sudo yum install autoconf -y
+	sudo yum install automake -y
+	sudo yum install libtool -y
+	cd third/
+	#需要安装新版本cmake,当然你也可以通过yum或者apt-get方式安装(前提是版本够新)
+	tar -xvf cmake-3.10.0-rc4.tar.gz
+	cd cmake-3.10.0-rc4
+	scl enable devtoolset-4 bash
+	./configure
+	make -j4
+	sudo make install
+
+
+	3、安装ZLToolKit(先回到工程根目录然后操作)
+	scl enable devtoolset-4 bash
+	cd third/
+	tar -xvjf ZLToolKit.tar.bz2
+	cd ZLToolKit
+	mkdir build
+	cd build
+	cmake ..
+	make -j4
+	sudo make install
+	
+	4、安装hiredis(先回到工程根目录然后操作)
+	cd third/
+	tar -xvjf hiredis-0.13.tar.bz2 
+	make -j4
+	sudo make install
+
+	5、安装libev(先回到工程根目录然后操作)
+	cd third/
+	tar -xvjf libev.tar.bz2
+	cd libev
+	sh ./autogen.sh
+	./configure
+	make -j4
+	sudo make install
+
+	6、编译TcpProxyServer
+	#先下载TcpProxyServer源码然后解压
+	cd TcpProxyServer
+	mkdir build
+	cmake ..
+	make -j8
+	
+	

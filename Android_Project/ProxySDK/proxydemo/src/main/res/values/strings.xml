@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ProxySDK</string>
+    <string name="userName">用户名：</string>
+    <string name="password">密码：</string>
+    <string name="defaultUser">android</string>
+    <string name="defaultPwd">123456</string>
+    <string name="login">登录</string>
+    <string name="userNameHint">请输入登录名</string>
+    <string name="passwordHint">请输入登录密码</string>
+    <string name="title_activity_binder">绑定列表</string>
+    <string name="add_binder">添加</string>
+</resources>

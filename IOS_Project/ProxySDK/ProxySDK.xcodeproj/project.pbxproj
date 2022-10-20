@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1800E60221ABA11900DF66DE /* libZLToolKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1800E60121ABA11900DF66DE /* libZLToolKit.a */; };
+		1810872724F8ABD100E37083 /* ProxyJumpSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810871124F8ABD100E37083 /* ProxyJumpSession.cpp */; };
+		1810872824F8ABD200E37083 /* HttpRequestSplitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810871424F8ABD100E37083 /* HttpRequestSplitter.cpp */; };
+		1810872924F8ABD200E37083 /* ProxySession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810871824F8ABD100E37083 /* ProxySession.cpp */; };
+		1810872A24F8ABD200E37083 /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810871924F8ABD100E37083 /* Status.cpp */; };
+		1810872B24F8ABD200E37083 /* ProxyBinderSession.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810871B24F8ABD100E37083 /* ProxyBinderSession.cpp */; };
+		1810872C24F8ABD200E37083 /* Proxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810871E24F8ABD100E37083 /* Proxy.cpp */; };
+		1810872D24F8ABD200E37083 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810872124F8ABD100E37083 /* Config.cpp */; };
+		1810872E24F8ABD200E37083 /* ProxyProtocol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810872224F8ABD100E37083 /* ProxyProtocol.cpp */; };
+		1810872F24F8ABD200E37083 /* ProxyClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810872324F8ABD100E37083 /* ProxyClient.cpp */; };
+		1810873024F8ABD200E37083 /* ProxyChannel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1810872624F8ABD100E37083 /* ProxyChannel.cpp */; };
+		1840FBBA1F1322300048042C /* ProxySDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1840FBB91F1322300048042C /* ProxySDK.mm */; };
+		1840FBBB1F1322300048042C /* ProxySDK.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1840FBB81F1322300048042C /* ProxySDK.h */; };
+		9FF12C6B2900FDC300013438 /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FF12C652900FDC300013438 /* json_writer.cpp */; };
+		9FF12C6C2900FDC300013438 /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FF12C672900FDC300013438 /* json_reader.cpp */; };
+		9FF12C6D2900FDC300013438 /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FF12C692900FDC300013438 /* json_value.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1840FBB31F1322300048042C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				1840FBBB1F1322300048042C /* ProxySDK.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1800E60121ABA11900DF66DE /* libZLToolKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libZLToolKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1810871124F8ABD100E37083 /* ProxyJumpSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyJumpSession.cpp; sourceTree = "<group>"; };
+		1810871224F8ABD100E37083 /* ProxyClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyClient.h; sourceTree = "<group>"; };
+		1810871324F8ABD100E37083 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		1810871424F8ABD100E37083 /* HttpRequestSplitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpRequestSplitter.cpp; sourceTree = "<group>"; };
+		1810871524F8ABD100E37083 /* ProxyJumpSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyJumpSession.h; sourceTree = "<group>"; };
+		1810871624F8ABD100E37083 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		1810871724F8ABD100E37083 /* ProxyTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyTerminal.h; sourceTree = "<group>"; };
+		1810871824F8ABD100E37083 /* ProxySession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxySession.cpp; sourceTree = "<group>"; };
+		1810871924F8ABD100E37083 /* Status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Status.cpp; sourceTree = "<group>"; };
+		1810871A24F8ABD100E37083 /* HttpRequestSplitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestSplitter.h; sourceTree = "<group>"; };
+		1810871B24F8ABD100E37083 /* ProxyBinderSession.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyBinderSession.cpp; sourceTree = "<group>"; };
+		1810871C24F8ABD100E37083 /* ProxySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxySession.h; sourceTree = "<group>"; };
+		1810871D24F8ABD100E37083 /* TcpServerImp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpServerImp.h; sourceTree = "<group>"; };
+		1810871E24F8ABD100E37083 /* Proxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Proxy.cpp; sourceTree = "<group>"; };
+		1810871F24F8ABD100E37083 /* ProxyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyProtocol.h; sourceTree = "<group>"; };
+		1810872024F8ABD100E37083 /* Proxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proxy.h; sourceTree = "<group>"; };
+		1810872124F8ABD100E37083 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Config.cpp; sourceTree = "<group>"; };
+		1810872224F8ABD100E37083 /* ProxyProtocol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyProtocol.cpp; sourceTree = "<group>"; };
+		1810872324F8ABD100E37083 /* ProxyClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyClient.cpp; sourceTree = "<group>"; };
+		1810872424F8ABD100E37083 /* ProxyChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyChannel.h; sourceTree = "<group>"; };
+		1810872524F8ABD100E37083 /* ProxyBinderSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyBinderSession.h; sourceTree = "<group>"; };
+		1810872624F8ABD100E37083 /* ProxyChannel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyChannel.cpp; sourceTree = "<group>"; };
+		1840FBB51F1322300048042C /* libProxySDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libProxySDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1840FBB81F1322300048042C /* ProxySDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProxySDK.h; sourceTree = "<group>"; };
+		1840FBB91F1322300048042C /* ProxySDK.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ProxySDK.mm; sourceTree = "<group>"; };
+		18FF43F31FD30A4500E7FAE6 /* libZLToolKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZLToolKit.a; path = "../../../../Library/Developer/Xcode/DerivedData/ProxySDK-caqwsqqgcddnwoczmkmopdtpabvb/Build/Products/Release-iphoneos/libZLToolKit.a"; sourceTree = "<group>"; };
+		9FF12C652900FDC300013438 /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
+		9FF12C662900FDC300013438 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		9FF12C672900FDC300013438 /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
+		9FF12C682900FDC300013438 /* json_tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_tool.h; sourceTree = "<group>"; };
+		9FF12C692900FDC300013438 /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
+		9FF12C6A2900FDC300013438 /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1840FBB21F1322300048042C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1800E60221ABA11900DF66DE /* libZLToolKit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1800E60521ABA1A700DF66DE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1810871024F8ABD100E37083 /* Proxy */,
+			);
+			name = src;
+			path = ../../../src;
+			sourceTree = "<group>";
+		};
+		1810871024F8ABD100E37083 /* Proxy */ = {
+			isa = PBXGroup;
+			children = (
+				1810871124F8ABD100E37083 /* ProxyJumpSession.cpp */,
+				1810871224F8ABD100E37083 /* ProxyClient.h */,
+				1810871324F8ABD100E37083 /* Status.h */,
+				1810871424F8ABD100E37083 /* HttpRequestSplitter.cpp */,
+				1810871524F8ABD100E37083 /* ProxyJumpSession.h */,
+				1810871624F8ABD100E37083 /* Config.h */,
+				1810871724F8ABD100E37083 /* ProxyTerminal.h */,
+				1810871824F8ABD100E37083 /* ProxySession.cpp */,
+				1810871924F8ABD100E37083 /* Status.cpp */,
+				1810871A24F8ABD100E37083 /* HttpRequestSplitter.h */,
+				1810871B24F8ABD100E37083 /* ProxyBinderSession.cpp */,
+				1810871C24F8ABD100E37083 /* ProxySession.h */,
+				1810871D24F8ABD100E37083 /* TcpServerImp.h */,
+				1810871E24F8ABD100E37083 /* Proxy.cpp */,
+				1810871F24F8ABD100E37083 /* ProxyProtocol.h */,
+				1810872024F8ABD100E37083 /* Proxy.h */,
+				1810872124F8ABD100E37083 /* Config.cpp */,
+				1810872224F8ABD100E37083 /* ProxyProtocol.cpp */,
+				1810872324F8ABD100E37083 /* ProxyClient.cpp */,
+				1810872424F8ABD100E37083 /* ProxyChannel.h */,
+				1810872524F8ABD100E37083 /* ProxyBinderSession.h */,
+				1810872624F8ABD100E37083 /* ProxyChannel.cpp */,
+			);
+			path = Proxy;
+			sourceTree = "<group>";
+		};
+		1840FBAC1F1322300048042C = {
+			isa = PBXGroup;
+			children = (
+				1840FBB71F1322300048042C /* ProxySDK */,
+				1840FBB61F1322300048042C /* Products */,
+				18FF43F21FD30A4400E7FAE6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1840FBB61F1322300048042C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1840FBB51F1322300048042C /* libProxySDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1840FBB71F1322300048042C /* ProxySDK */ = {
+			isa = PBXGroup;
+			children = (
+				9FF12C642900FDC300013438 /* lib_json */,
+				1800E60521ABA1A700DF66DE /* src */,
+				1840FBB81F1322300048042C /* ProxySDK.h */,
+				1840FBB91F1322300048042C /* ProxySDK.mm */,
+			);
+			path = ProxySDK;
+			sourceTree = "<group>";
+		};
+		18FF43F21FD30A4400E7FAE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1800E60121ABA11900DF66DE /* libZLToolKit.a */,
+				18FF43F31FD30A4500E7FAE6 /* libZLToolKit.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FF12C642900FDC300013438 /* lib_json */ = {
+			isa = PBXGroup;
+			children = (
+				9FF12C652900FDC300013438 /* json_writer.cpp */,
+				9FF12C662900FDC300013438 /* CMakeLists.txt */,
+				9FF12C672900FDC300013438 /* json_reader.cpp */,
+				9FF12C682900FDC300013438 /* json_tool.h */,
+				9FF12C692900FDC300013438 /* json_value.cpp */,
+				9FF12C6A2900FDC300013438 /* json_valueiterator.inl */,
+			);
+			name = lib_json;
+			path = ../../../../ZLMediaKit/3rdpart/jsoncpp/src/lib_json;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1840FBB41F1322300048042C /* ProxySDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1840FBBE1F1322300048042C /* Build configuration list for PBXNativeTarget "ProxySDK" */;
+			buildPhases = (
+				1840FBB11F1322300048042C /* Sources */,
+				1840FBB21F1322300048042C /* Frameworks */,
+				1840FBB31F1322300048042C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProxySDK;
+			productName = ProxySDK;
+			productReference = 1840FBB51F1322300048042C /* libProxySDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1840FBAD1F1322300048042C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = xzl;
+				TargetAttributes = {
+					1840FBB41F1322300048042C = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = WAM74MS6SZ;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1840FBB01F1322300048042C /* Build configuration list for PBXProject "ProxySDK" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 1840FBAC1F1322300048042C;
+			productRefGroup = 1840FBB61F1322300048042C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1840FBB41F1322300048042C /* ProxySDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1840FBB11F1322300048042C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9FF12C6C2900FDC300013438 /* json_reader.cpp in Sources */,
+				1840FBBA1F1322300048042C /* ProxySDK.mm in Sources */,
+				1810872C24F8ABD200E37083 /* Proxy.cpp in Sources */,
+				9FF12C6D2900FDC300013438 /* json_value.cpp in Sources */,
+				1810873024F8ABD200E37083 /* ProxyChannel.cpp in Sources */,
+				1810872B24F8ABD200E37083 /* ProxyBinderSession.cpp in Sources */,
+				1810872F24F8ABD200E37083 /* ProxyClient.cpp in Sources */,
+				1810872924F8ABD200E37083 /* ProxySession.cpp in Sources */,
+				1810872824F8ABD200E37083 /* HttpRequestSplitter.cpp in Sources */,
+				1810872D24F8ABD200E37083 /* Config.cpp in Sources */,
+				1810872724F8ABD100E37083 /* ProxyJumpSession.cpp in Sources */,
+				1810872E24F8ABD200E37083 /* ProxyProtocol.cpp in Sources */,
+				9FF12C6B2900FDC300013438 /* json_writer.cpp in Sources */,
+				1810872A24F8ABD200E37083 /* Status.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1840FBBC1F1322300048042C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1840FBBD1F1322300048042C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1840FBBF1F1322300048042C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = WAM74MS6SZ;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../ZLMediaKit/3rdpart/ZLToolKit/src",
+					"$(SRCROOT)/../../src",
+					"$(SRCROOT)/../ZLToolKit/ZLToolKit/",
+					"$(SRCROOT)/../../../ZLMediaKit/src",
+					"$(SRCROOT)/../../../ZLMediaKit/3rdpart/jsoncpp/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DENABLE_OPENSSL",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1840FBC01F1322300048042C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = WAM74MS6SZ;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../ZLMediaKit/3rdpart/ZLToolKit/src",
+					"$(SRCROOT)/../../src",
+					"$(SRCROOT)/../ZLToolKit/ZLToolKit/",
+					"$(SRCROOT)/../../../ZLMediaKit/src",
+					"$(SRCROOT)/../../../ZLMediaKit/3rdpart/jsoncpp/include",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DENABLE_OPENSSL",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1840FBB01F1322300048042C /* Build configuration list for PBXProject "ProxySDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1840FBBC1F1322300048042C /* Debug */,
+				1840FBBD1F1322300048042C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1840FBBE1F1322300048042C /* Build configuration list for PBXNativeTarget "ProxySDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1840FBBF1F1322300048042C /* Debug */,
+				1840FBC01F1322300048042C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1840FBAD1F1322300048042C /* Project object */;
+}
