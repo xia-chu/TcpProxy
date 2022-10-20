@@ -5,11 +5,12 @@
  linux/windows/mac/ios/android
  
 # 注意
- 改项目依赖[zlmediakit](https://github.com/ZLMediaKit/ZLMediaKit),编译前这样下载完整代码：
+ 该项目依赖[zlmediakit](https://github.com/ZLMediaKit/ZLMediaKit),编译前这样下载完整代码：
  
 ```bash
 git clone https://github.com/ZLMediaKit/ZLMediaKit.git
 cd ZLMediaKit
+git checkout b3fd74ccf030fc5f0185660c9cf0e2b812ad1561
 git submodule update --init
 
 cd ..
