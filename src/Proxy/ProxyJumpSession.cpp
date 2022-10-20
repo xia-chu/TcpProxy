@@ -26,42 +26,42 @@ ProxyJumpSession::~ProxyJumpSession() {
 }
 
 void ProxyJumpSession::onRecv(const Buffer::Ptr &pBuf) {
-	try{
-		onRecvData(pBuf->data(),pBuf->size());
-	}catch (std::exception &ex) {
-		WarnL << ex.what();
-		shutdown();
-	}
+    try{
+        onRecvData(pBuf->data(),pBuf->size());
+    }catch (std::exception &ex) {
+        WarnL << ex.what();
+        shutdown();
+    }
 }
 
 int ProxyJumpSession::onSendData(const string &data) {
-	return SockSender::send(data);
+    return SockSender::send(data);
 }
 
 void ProxyJumpSession::onManager() {
-	if(_aliveTicker.createdTime() > 10 * 1000){
-		//设备必须在10秒内完成跳转操作
-		WarnL << "规定时间未跳转：" << get_peer_ip();
-		shutdown();
-		return;
-	}
+    if(_aliveTicker.createdTime() > 10 * 1000){
+        //设备必须在10秒内完成跳转操作
+        WarnL << "规定时间未跳转：" << get_peer_ip();
+        shutdown();
+        return;
+    }
 }
 
 
 bool ProxyJumpSession::onProcessRequest(const string &cmd,uint64_t seq, const Value &obj,const string &body) {
-	Value resObj(objectValue);
-	string jumpSrvUrl;
-	uint16_t jumpSrvPort = 0;
-	NoticeCenter::Instance().emitEvent(Config::Broadcast::kBroadcastSessionJump,(string &)jumpSrvUrl,(uint16_t &)jumpSrvPort,get_local_port());
-	if(!jumpSrvUrl.empty() && jumpSrvPort != 0){
-		resObj["jumpSrvUrl"] = jumpSrvUrl;
-		resObj["jumpSrvPort"] = jumpSrvPort;
-		sendResponse(seq,CODE_JUMP,"jump success",resObj,"");
-	}else{
+    Value resObj(objectValue);
+    string jumpSrvUrl;
+    uint16_t jumpSrvPort = 0;
+    NoticeCenter::Instance().emitEvent(Config::Broadcast::kBroadcastSessionJump,(string &)jumpSrvUrl,(uint16_t &)jumpSrvPort,get_local_port());
+    if(!jumpSrvUrl.empty() && jumpSrvPort != 0){
+        resObj["jumpSrvUrl"] = jumpSrvUrl;
+        resObj["jumpSrvPort"] = jumpSrvPort;
+        sendResponse(seq,CODE_JUMP,"jump success",resObj,"");
+    }else{
         sendResponse(seq,CODE_BUSY,"jump failed",resObj,"");
     }
     shutdown();
-	return true;
+    return true;
 }
 
 

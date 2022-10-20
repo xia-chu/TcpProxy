@@ -22,17 +22,17 @@ namespace Proxy {
 
 class ProxyJumpSession: public TcpSession , public  ProxyProtocol{
 public:
-	typedef std::shared_ptr<ProxyJumpSession> Ptr;
-	ProxyJumpSession(const Socket::Ptr &sock);
-	virtual ~ProxyJumpSession();
-	virtual void onRecv(const Buffer::Ptr &) override;
-	virtual void onError(const SockException &err) override {};
-	virtual void onManager() override;
+    typedef std::shared_ptr<ProxyJumpSession> Ptr;
+    ProxyJumpSession(const Socket::Ptr &sock);
+    virtual ~ProxyJumpSession();
+    virtual void onRecv(const Buffer::Ptr &) override;
+    virtual void onError(const SockException &err) override {};
+    virtual void onManager() override;
 private:
-	typedef void (ProxyJumpSession::*onHandleRequest)(uint64_t seq, const Value &obj,const string &body);
-	virtual bool onProcessRequest(const string &cmd,uint64_t seq,const Value &obj,const string &body) override;
-	virtual int  onSendData(const string &data) override;
-	Ticker _beatTicker;
+    typedef void (ProxyJumpSession::*onHandleRequest)(uint64_t seq, const Value &obj,const string &body);
+    virtual bool onProcessRequest(const string &cmd,uint64_t seq,const Value &obj,const string &body) override;
+    virtual int  onSendData(const string &data) override;
+    Ticker _beatTicker;
 };
 
 } /* namespace Proxy */

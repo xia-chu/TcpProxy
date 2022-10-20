@@ -1,4 +1,4 @@
-/*
+﻿/*
  * TcpProxySession.cpp
  *
  *  Created on: 2017年6月12日
@@ -17,7 +17,7 @@ namespace Proxy {
 static atomic<uint64_t> s_sessionCount(0);
 
 uint64_t ProxySession::getSessionCount(){
-	return s_sessionCount;
+    return s_sessionCount;
 }
 
 ProxySession::ProxySession(const Socket::Ptr &sock):TcpSession(sock),ProxyProtocol(TYPE_SERVER){
@@ -32,15 +32,15 @@ ProxySession::~ProxySession() {
 }
 
 const Value& ProxySession::getLoginInfo() const{
-	return _login_info;
+    return _login_info;
 }
 
 const string &ProxySession::getSessionUuid() const{
-	return _user_id;
+    return _user_id;
 }
 
 const string &ProxySession::getSessionAppId() const {
-	return _app_id;
+    return _app_id;
 }
 
 void ProxySession::onRecv(const Buffer::Ptr &pBuf) {
@@ -123,25 +123,25 @@ static void pushTask(const weak_ptr<TcpSession> &weakPtr, const function<void(bo
 
 void ProxySession::handleRequest_login(const string &cmd, uint64_t seq, const Value &obj,const string &body) {
     InfoP(this) << obj;
-	TimeTicker();
-	/*
-	 * obj 对象的定义：
-	 * {
-	 * 	"uuid":"该会话的唯一识别符",
-	 *  "ver" : "协议版本，1.0"
-	 * }
-	 */
-	checkState(cmd,STATUS_LOGOUTED);
+    TimeTicker();
+    /*
+     * obj 对象的定义：
+     * {
+     * 	"uuid":"该会话的唯一识别符",
+     *  "ver" : "协议版本，1.0"
+     * }
+     */
+    checkState(cmd,STATUS_LOGOUTED);
 
-	//登录中
-	_status = STATUS_LOGINING;
-	auto appId = obj["info"]["user"]["appId"].asString();
+    //登录中
+    _status = STATUS_LOGINING;
+    auto appId = obj["info"]["user"]["appId"].asString();
     auto token = obj["info"]["user"]["token"].asString();
     auto uuid = obj["uuid"].asString();
-	if(uuid.empty() || appId.empty() || token.empty()){
+    if(uuid.empty() || appId.empty() || token.empty()){
         sendResponse(seq,CODE_BAD_REQUEST,"uuid 、appId 、token 字段为空",Json::objectValue);
         throw std::runtime_error("uuid 、appId 、token 字段为空!");
-	}
+    }
 
     weak_ptr<ProxySession> weakSelf = dynamic_pointer_cast<ProxySession>(shared_from_this());
     AuthInvoker invoker = [weakSelf, this, seq, obj, appId, uuid](const string &err) {
@@ -162,7 +162,7 @@ void ProxySession::handleRequest_login(const string &cmd, uint64_t seq, const Va
     //鉴权事件广播
     auto strongSelf = shared_from_this();
     if(!NoticeCenter::Instance().emitEvent(Config::Broadcast::kBroadcastOnUserLoginAuth, strongSelf, appId, uuid, token, obj, invoker)){
-		invoker("");
+        invoker("");
     }
 }
 
@@ -171,13 +171,13 @@ static void saveMessageHistory( const string &appId, const string &from, const s
 }
 
 void ProxySession::handleRequest_transfer(const string &cmd,uint64_t seq, const Value& obj,const string &body) {
-	TimeTicker();
-	/*
-	 * obj 对象的定义：
-	 * {
-	 * 	"to":"转发目标",
-	 * }
-	 */
+    TimeTicker();
+    /*
+     * obj 对象的定义：
+     * {
+     * 	"to":"转发目标",
+     * }
+     */
 
     checkState(cmd, STATUS_LOGINED);
     auto to_uid = obj["to"].asString();
@@ -196,9 +196,9 @@ void ProxySession::handleRequest_transfer(const string &cmd,uint64_t seq, const 
         saveMessageHistory(appId, from, to_uid, obj, body, success, false);
     };
 
-	auto targetSession = UserManager::Instance(_app_id).get(to_uid);
-	if(!targetSession){
-		weak_ptr<ProxySession> weakSelf = dynamic_pointer_cast<ProxySession>(shared_from_this());
+    auto targetSession = UserManager::Instance(_app_id).get(to_uid);
+    if(!targetSession){
+        weak_ptr<ProxySession> weakSelf = dynamic_pointer_cast<ProxySession>(shared_from_this());
         ResponseInvoker invoker = [seq, weakSelf, this, saveMessage](int code, const string &msg, const Value &obj, const string &body) {
             pushTask(weakSelf, [this, seq, code, msg, obj, body, saveMessage](bool flag) {
                 if (flag) {
@@ -216,11 +216,11 @@ void ProxySession::handleRequest_transfer(const string &cmd,uint64_t seq, const 
             sendResponse(seq, CODE_NOTFOUND, "can not find the target", objectValue);
         }
         return;
-	}
+    }
 
-	weak_ptr<ProxySession> weakSelf = dynamic_pointer_cast<ProxySession>(shared_from_this());
-	//驱动目标会话执行转发
-	targetSession->sendRequestFromOther(cmd, _user_id, obj, body, [weakSelf, seq, this , saveMessage](int code, const string &msg, const Value &obj, const string &body) {
+    weak_ptr<ProxySession> weakSelf = dynamic_pointer_cast<ProxySession>(shared_from_this());
+    //驱动目标会话执行转发
+    targetSession->sendRequestFromOther(cmd, _user_id, obj, body, [weakSelf, seq, this , saveMessage](int code, const string &msg, const Value &obj, const string &body) {
         pushTask(weakSelf, [this, seq, code, msg, obj, body, saveMessage](bool flag) {
             if (flag) {
                 //回复转发结果
@@ -228,11 +228,11 @@ void ProxySession::handleRequest_transfer(const string &cmd,uint64_t seq, const 
             }
             saveMessage(code == CODE_SUCCESS);
         });
-	});
+    });
 }
 
 void ProxySession::handleRequest_joinRoom(const string &cmd, uint64_t seq, const Value &obj, const string &body) {
-	checkState(cmd,STATUS_LOGINED);
+    checkState(cmd,STATUS_LOGINED);
 
     auto room_id = obj["room_id"].asString();
     if (room_id.empty()) {
@@ -245,8 +245,8 @@ void ProxySession::handleRequest_joinRoom(const string &cmd, uint64_t seq, const
         return;
     }
 
-	weak_ptr<ProxySession> weakSelf = dynamic_pointer_cast<ProxySession>(shared_from_this());
-	RoomManager::Instance(_app_id).joinRoom(room_id, _user_id, weakSelf.lock(), [weakSelf, this, room_id, seq, obj, body](const string &err) {
+    weak_ptr<ProxySession> weakSelf = dynamic_pointer_cast<ProxySession>(shared_from_this());
+    RoomManager::Instance(_app_id).joinRoom(room_id, _user_id, weakSelf.lock(), [weakSelf, this, room_id, seq, obj, body](const string &err) {
         //加入房间结果
         pushTask(weakSelf, [this, room_id, seq, obj, body, err](bool flag) {
             if (flag) {
@@ -266,7 +266,7 @@ void ProxySession::handleRequest_joinRoom(const string &cmd, uint64_t seq, const
                 broadcastRoomEvent("onJoin", room_id, obj, body, false);
             }
         });
-	});
+    });
 }
 
 void ProxySession::handleRequest_exitRoom(const string &cmd, uint64_t seq, const Value &obj, const string &body) {
@@ -276,7 +276,7 @@ void ProxySession::handleRequest_exitRoom(const string &cmd, uint64_t seq, const
 }
 
 void ProxySession::exitRoom(const string &room_id, bool emitEvent) {
-	//退出单个群组
+    //退出单个群组
     if (!room_id.empty()) {
         //通知其他人我已经退出房间了
         if (_joined_rooms.erase(room_id)) {
@@ -337,7 +337,7 @@ void ProxySession::handleRequest_broadcastRoom(const string &cmd, uint64_t seq, 
 }
 
 void ProxySession::handleRequest_beat(const string &cmd,uint64_t seq, const Value &obj,const string &body){
-	sendResponse(seq,CODE_SUCCESS,"",objectValue);
+    sendResponse(seq,CODE_SUCCESS,"",objectValue);
 }
 
 void ProxySession::onAuthSuccess(int seq, const string &appId, const string &uuid, const Value &obj) {
@@ -403,7 +403,7 @@ void ProxySession::sendRequestFromOther(const string &cmd, const string &from, c
 }
 
 int ProxySession::onSendData(const string &data) {
-	return SockSender::send(data);
+    return SockSender::send(data);
 }
 
 void ProxySession::checkState(const string &cmd,STATUS_CODE state) {
@@ -429,7 +429,7 @@ UserManager &UserManager::Instance(const string &appId) {
 }
 
 UserManager::UserManager(const string &appId){
-	_appId = appId;
+    _appId = appId;
 }
 
 void UserManager::add(const string &user_name, const ProxySession::Ptr &session) {
@@ -485,19 +485,19 @@ RoomManager &RoomManager::Instance(const string &appId) {
 }
 
 RoomManager::RoomManager(const string &appId){
-	_appId = appId;
+    _appId = appId;
 }
 
 void RoomManager::joinRoom(const string &room_id, const string &user_name, const ProxySession::Ptr &ptr,const ProxySession::AuthInvoker &invoker) {
-	lock_guard<recursive_mutex> lck(_mtxRoom);
-	auto strongSession = _mapRoom[room_id][user_name].lock();
-	if(strongSession == ptr){
-		//重复加入房间
-		invoker("");
-		return;
-	}
-	weak_ptr<ProxySession> weakPtr = ptr;
-	ProxySession::AuthInvoker invokerWrapper = [this,weakPtr,room_id,user_name,invoker](const string &err){
+    lock_guard<recursive_mutex> lck(_mtxRoom);
+    auto strongSession = _mapRoom[room_id][user_name].lock();
+    if(strongSession == ptr){
+        //重复加入房间
+        invoker("");
+        return;
+    }
+    weak_ptr<ProxySession> weakPtr = ptr;
+    ProxySession::AuthInvoker invokerWrapper = [this,weakPtr,room_id,user_name,invoker](const string &err){
         if (err.empty()) {
             lock_guard<recursive_mutex> lck(_mtxRoom);
             _mapRoom[room_id][user_name] = weakPtr;
@@ -506,50 +506,50 @@ void RoomManager::joinRoom(const string &room_id, const string &user_name, const
             }
         }
         invoker(err);
-	};
+    };
 
-	auto flag = NoticeCenter::Instance().emitEvent(Config::Broadcast::kBroadcastOnUserJoinRoom, ptr, _appId, user_name, room_id, invokerWrapper);
-	if(!flag){
-		invokerWrapper("");
-	}
+    auto flag = NoticeCenter::Instance().emitEvent(Config::Broadcast::kBroadcastOnUserJoinRoom, ptr, _appId, user_name, room_id, invokerWrapper);
+    if(!flag){
+        invokerWrapper("");
+    }
 }
 
 bool RoomManager::exitRoom(const unordered_set<string> &room_ids, const string &user_name, const ProxySession::Ptr &ptr,bool emitEvent) {
-	bool flag = false;
-	for (auto &room_id : room_ids){
-		lock_guard<recursive_mutex> lck(_mtxRoom);
+    bool flag = false;
+    for (auto &room_id : room_ids){
+        lock_guard<recursive_mutex> lck(_mtxRoom);
 
-		auto it0 = _mapRoom.find(room_id);
-		if(it0 == _mapRoom.end()){
-			//无此房间
-			continue;
-		}
-		auto it1 = it0->second.find(user_name);
-		if(it1 == it0->second.end()){
-			//房间无此人
-			continue;
-		}
+        auto it0 = _mapRoom.find(room_id);
+        if(it0 == _mapRoom.end()){
+            //无此房间
+            continue;
+        }
+        auto it1 = it0->second.find(user_name);
+        if(it1 == it0->second.end()){
+            //房间无此人
+            continue;
+        }
 
-		auto strongSession = it1->second.lock();
-		if(strongSession && strongSession != ptr){
-			//这是其他同名对象
-			continue;
-		}
+        auto strongSession = it1->second.lock();
+        if(strongSession && strongSession != ptr){
+            //这是其他同名对象
+            continue;
+        }
 
-		//从房间删除此人
-		it0->second.erase(it1);
-		if(it0->second.empty()){
-			//房间为空，删除房间
-			onRemoveRoom(it0->first);
-			_mapRoom.erase(it0);
-		}
-		flag = true;
-	}
+        //从房间删除此人
+        it0->second.erase(it1);
+        if(it0->second.empty()){
+            //房间为空，删除房间
+            onRemoveRoom(it0->first);
+            _mapRoom.erase(it0);
+        }
+        flag = true;
+    }
 
-	if(flag && emitEvent){
-		NoticeCenter::Instance().emitEvent(Config::Broadcast::kBroadcastOnUserExitRoom,ptr,_appId,user_name,room_ids);
-	}
-	return flag;
+    if(flag && emitEvent){
+        NoticeCenter::Instance().emitEvent(Config::Broadcast::kBroadcastOnUserExitRoom,ptr,_appId,user_name,room_ids);
+    }
+    return flag;
 }
 
 bool RoomManager::forEachRoomMember(const string &room_id, const string &user_name, const function<void(ProxySession::Ptr &ptr)> &callback) {

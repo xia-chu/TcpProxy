@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ProxyBinderSession.cpp
  *
  *  Created on: 2017年6月15日
@@ -12,14 +12,14 @@ using namespace toolkit;
 namespace Proxy {
 
 ProxyBinderSession::ProxyBinderSession(const Socket::Ptr &sock):TcpSession(sock){
-	static int timeoutSec = mINI::Instance()[Config::Session::kTimeoutSec];
-	getSock()->setSendTimeOutSecond(timeoutSec);
-	DebugP(this);
+    static int timeoutSec = mINI::Instance()[Config::Session::kTimeoutSec];
+    getSock()->setSendTimeOutSecond(timeoutSec);
+    DebugP(this);
 }
 
 void ProxyBinderSession::onStart(){
-	_toSock = _contex->_terminal->obtain(_contex->_toUuid);
-	weak_ptr<ProxyBinderSession> weakSelf = dynamic_pointer_cast<ProxyBinderSession>(shared_from_this());
+    _toSock = _contex->_terminal->obtain(_contex->_toUuid);
+    weak_ptr<ProxyBinderSession> weakSelf = dynamic_pointer_cast<ProxyBinderSession>(shared_from_this());
     _toSock->setOnRemoteConnect([weakSelf](const SockException &ex) {
         //WarnL << "ProxySock onConnect:" << ex.getErrCode() << " " << ex.what();
         auto strongSelf = weakSelf.lock();
@@ -79,27 +79,27 @@ void ProxyBinderSession::onStart(){
 }
 
 void ProxyBinderSession::onSocketErr(const SockException &ex){
-	_contex->onSocketErr(ex);
+    _contex->onSocketErr(ex);
 }
 
 void ProxyBinderSession::flushData() {
     _toSock->sendRemote(_dataStream);
-	_dataStream.clear();
+    _dataStream.clear();
 }
 
 void ProxyBinderSession::onRecv(const Buffer::Ptr &buf) {
     Status::Instance().addCountBindServer(true, buf->size());
     if(_connected){
         _toSock->sendRemote(string(buf->data(), buf->size()));
-	}else{
-		_dataStream.append(buf->data(),buf->size());
-	}
+    }else{
+        _dataStream.append(buf->data(),buf->size());
+    }
 }
 
 void ProxyBinderSession::attachServer(const Server &srv) {
-	TcpServerImp *server = (TcpServerImp *)(&srv);
-	_contex = (ProxyBinder *)server->getContex();
-	onStart();
+    TcpServerImp *server = (TcpServerImp *)(&srv);
+    _contex = (ProxyBinder *)server->getContex();
+    onStart();
 }
 
 ///////////////ProxyBinder///////////////
@@ -108,9 +108,9 @@ ProxyBinder::ProxyBinder(const ProxyTerminalInterface::Ptr& terminal): _terminal
 }
 
 void ProxyBinder::bind(const string& touuid, uint16_t port,const string& url) {
-	_toUuid = touuid;
-	_toPort = port;
-	_toUrl = url;
+    _toUuid = touuid;
+    _toPort = port;
+    _toUrl = url;
     std::weak_ptr<ProxyBinder> weakSelf = shared_from_this();
     _terminal->bind(touuid,[weakSelf](int code,const string &msg,const Value &obj,const string &body){
         auto strongSelf = weakSelf.lock();
@@ -123,8 +123,8 @@ void ProxyBinder::bind(const string& touuid, uint16_t port,const string& url) {
     });
 }
 uint16_t ProxyBinder::start(uint16_t port, const string& ip) {
-	_server.reset(new TcpServerImp(this));
-	return _server->start<ProxyBinderSession>(port,ip);
+    _server.reset(new TcpServerImp(this));
+    return _server->start<ProxyBinderSession>(port,ip);
 }
 
 } /* namespace Proxy */

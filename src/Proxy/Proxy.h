@@ -1,4 +1,4 @@
-#ifndef PROXY_PROXY_H_
+﻿#ifndef PROXY_PROXY_H_
 #define PROXY_PROXY_H_
 
 #include <stdint.h>

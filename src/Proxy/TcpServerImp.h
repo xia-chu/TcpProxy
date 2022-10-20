@@ -1,4 +1,4 @@
-/*
+﻿/*
  * TcpServerImp.h
  *
  *  Created on: 2017年6月15日
@@ -25,19 +25,19 @@ namespace Proxy {
 
 class TcpServerImp : public TcpServer{
 public:
-	typedef std::shared_ptr<TcpServerImp> Ptr;
+    typedef std::shared_ptr<TcpServerImp> Ptr;
     TcpServerImp(void *ctx) : TcpServer(EventPoller::Instance().shared_from_this()) {
-		contex = ctx;
+        contex = ctx;
         testSockConnect.reset(new Socket(EventPoller::Instance().shared_from_this()));
-	}
+    }
     ~TcpServerImp() {}
 
     void *getContex(){
-		return contex;
-	}
+        return contex;
+    }
 
-	template <typename SessionType>
-	uint16_t start(uint16_t port, const std::string& host = "0.0.0.0", uint32_t backlog = 1024) {
+    template <typename SessionType>
+    uint16_t start(uint16_t port, const std::string& host = "0.0.0.0", uint32_t backlog = 1024) {
         TcpServer::start<SessionType>(port, host, backlog);
         port = getPort();
 
@@ -60,7 +60,7 @@ public:
             });
         });
         return port;
-	}
+    }
 
 protected:
     Socket::Ptr onBeforeAcceptConnection(const EventPoller::Ptr &poller) override {
@@ -87,7 +87,7 @@ private:
         TcpServer::onAcceptConnection(sock);
     }
 private:
-	void *contex;
+    void *contex;
     Socket::Ptr testSockConnect;
     Socket::Ptr testSockAccept;
 };

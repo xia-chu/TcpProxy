@@ -60,8 +60,8 @@ const char kTimeoutSec[] = SESSION_FIELD"timeoutSec";
 const char kBeatInterval[] = SESSION_FIELD"beatInterval";
 
 static onceToken token([](){
-	mINI::Instance()[kTimeoutSec] = 45;
-	mINI::Instance()[kBeatInterval] = 15;
+    mINI::Instance()[kTimeoutSec] = 45;
+    mINI::Instance()[kBeatInterval] = 15;
 },nullptr);
 }//Session
 
@@ -94,14 +94,14 @@ const char kMaxBufferSec[] = PROXY_FIELD"kMaxBufferSec";
 const char kMinNoAckBufferSize[] = PROXY_FIELD"kMinNoAckBufferSize";
 
 static onceToken token([](){
-	//30秒足够长了 不会误判的
-	mINI::Instance()[kChnTimeoutSec] = 30;
-	//15秒的最大回复超时时间，网络太差才会这么久才回复的
-	mINI::Instance()[kResTimeoutSec] = 15;
+    //30秒足够长了 不会误判的
+    mINI::Instance()[kChnTimeoutSec] = 30;
+    //15秒的最大回复超时时间，网络太差才会这么久才回复的
+    mINI::Instance()[kResTimeoutSec] = 15;
     mINI::Instance()[kMinPktSize] = 32;
     mINI::Instance()[kMaxPktSize] = 512;
-	mINI::Instance()[kOptimizeDelaySpeed] = 4;
-	mINI::Instance()[kBufferFlushTime] = 0.5;
+    mINI::Instance()[kOptimizeDelaySpeed] = 4;
+    mINI::Instance()[kBufferFlushTime] = 0.5;
     mINI::Instance()[kMaxBufferSec] = 10;
     mINI::Instance()[kMinNoAckBufferSize] = 256;
 },nullptr);
