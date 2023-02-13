@@ -8,7 +8,7 @@
 #ifndef SESSION_TCPPROXYJUMPSESSION_H_
 #define SESSION_TCPPROXYJUMPSESSION_H_
 
-#include "Network/TcpSession.h"
+#include "Network/Session.h"
 #include "Util/SSLBox.h"
 #include "Util/TimeTicker.h"
 #include "json/json.h"
@@ -20,7 +20,7 @@ using namespace toolkit;
 namespace Proxy {
 
 
-class ProxyJumpSession: public TcpSession , public  ProxyProtocol{
+class ProxyJumpSession : public Session, public ProxyProtocol {
 public:
     typedef std::shared_ptr<ProxyJumpSession> Ptr;
     ProxyJumpSession(const Socket::Ptr &sock);

@@ -20,7 +20,9 @@ uint64_t ProxySession::getSessionCount(){
     return s_sessionCount;
 }
 
-ProxySession::ProxySession(const Socket::Ptr &sock):TcpSession(sock),ProxyProtocol(TYPE_SERVER){
+ProxySession::ProxySession(const Socket::Ptr &sock)
+    : Session(sock)
+    , ProxyProtocol(TYPE_SERVER) {
     DebugP(this);
     getSock()->setSendTimeOutSecond(mINI::Instance()[Config::Session::kTimeoutSec]);
     ++s_sessionCount;
@@ -105,7 +107,7 @@ bool ProxySession::onProcessRequest(const string &cmd,uint64_t seq, const Value 
     return true;
 }
 
-static void pushTask(const weak_ptr<TcpSession> &weakPtr, const function<void(bool)> &func) {
+static void pushTask(const weak_ptr<Session> &weakPtr, const function<void(bool)> &func) {
     auto strongSelf = weakPtr.lock();
     if (!strongSelf) {
         func(false);

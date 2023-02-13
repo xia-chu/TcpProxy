@@ -8,7 +8,7 @@
 #ifndef PROXY_PROXYBINDERSESSION_H_
 #define PROXY_PROXYBINDERSESSION_H_
 
-#include "Network/TcpSession.h"
+#include "Network/Session.h"
 #include "TcpServerImp.h"
 #include "ProxyChannel.h"
 #include "ProxyTerminal.h"
@@ -54,7 +54,7 @@ private:
     Socket::onErrCB _socketErr;
 };
 
-class ProxyBinderSession : public TcpSession {
+class ProxyBinderSession : public Session {
 public:
     typedef std::shared_ptr<ProxyBinderSession> Ptr;
     ProxyBinderSession(const Socket::Ptr &sock);

@@ -9,7 +9,7 @@
 #define SESSION_TCPPROXYSESSION_H_
 
 #include <unordered_set>
-#include "Network/TcpSession.h"
+#include "Network/Session.h"
 #include "Util/SSLBox.h"
 #include "Util/TimeTicker.h"
 #include "json/json.h"
@@ -20,7 +20,7 @@ using namespace toolkit;
 
 namespace Proxy {
 
-class ProxySession: public TcpSession , public  ProxyProtocol{
+class ProxySession: public Session, public ProxyProtocol {
 public:
     typedef std::shared_ptr<ProxySession> Ptr;
     typedef function<void (const string &err)> AuthInvoker;

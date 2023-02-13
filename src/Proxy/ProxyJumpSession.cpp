@@ -17,7 +17,9 @@ using namespace toolkit;
 
 namespace Proxy {
 
-ProxyJumpSession::ProxyJumpSession(const Socket::Ptr &sock):TcpSession(sock),ProxyProtocol(TYPE_SERVER){
+ProxyJumpSession::ProxyJumpSession(const Socket::Ptr &sock)
+    : Session(sock)
+    , ProxyProtocol(TYPE_SERVER){
     DebugL << get_peer_ip();
 }
 

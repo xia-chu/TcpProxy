@@ -75,23 +75,22 @@ protected:
     }
 
 private:
-    void onAcceptConnection(const Socket::Ptr & sock) override{
+    Session::Ptr onAcceptConnection(const Socket::Ptr &sock) override {
         if (testSockConnect->get_local_port() == 0 ||
             (sock->get_peer_ip() == testSockConnect->get_local_ip() &&
              sock->get_peer_port() == testSockConnect->get_local_port())) {
             //是clientSock链接
             testSockAccept = sock;
             InfoL << "获取到本地连接！";
-            return;
+            // return;
         }
-        TcpServer::onAcceptConnection(sock);
+        return TcpServer::onAcceptConnection(sock);
     }
 private:
     void *contex;
     Socket::Ptr testSockConnect;
     Socket::Ptr testSockAccept;
 };
-
 
 } /* namespace Proxy */
 

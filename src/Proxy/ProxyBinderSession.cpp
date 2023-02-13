@@ -11,7 +11,8 @@ using namespace toolkit;
 
 namespace Proxy {
 
-ProxyBinderSession::ProxyBinderSession(const Socket::Ptr &sock):TcpSession(sock){
+ProxyBinderSession::ProxyBinderSession(const Socket::Ptr &sock)
+    : Session(sock) {
     static int timeoutSec = mINI::Instance()[Config::Session::kTimeoutSec];
     getSock()->setSendTimeOutSecond(timeoutSec);
     DebugP(this);
